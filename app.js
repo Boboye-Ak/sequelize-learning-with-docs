@@ -22,10 +22,12 @@ dbauth()
 
 const app=express()
 
-app.use("/books", bookRouter)
-
 //Middleware
 app.use(express.json())
+
+app.use("/books", bookRouter)
+
+
 
 app.get("/", (req, res)=>{
     console.log("Hello World")

@@ -16,8 +16,17 @@ module.exports.getAllBooks=async(req, res)=>{
 
 module.exports.addBook=async(req, res)=>{
     try{
+        console.log(req.body)
+        const {title, year, description}=req.body
+        const newBook=await Book.create({
+            title, year, description
+        })
+        res.json({succcess:true, payload:newBook})
 
-    }catch{
-        
+
+    }catch (err){
+        console.log(err)
+        res.json(err)
+
     }
 }
