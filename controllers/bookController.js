@@ -68,14 +68,18 @@ module.exports.findBook=async(req, res)=>{
 
 module.exports.updateBook=async(req, res)=>{
     try{
-        await Book.update({
-            id:1
+        const {id}=req.params
+        const {title, year, description}=req.body
+        const updatedBook=await Book.update({
+            title:title,
+            year:year,
+            description:description
         },{
             where:{
-                id:null
+                id:id
             }
         })
-        res.json({msg:"Updated successfully"})
+        res.json({msg:"Updated successfully", payload:updatedBook})
 
     }catch(err){
         console.log(err)
@@ -87,9 +91,10 @@ module.exports.updateBook=async(req, res)=>{
 
 module.exports.deleteBook=async(req, res)=>{
     try{
+        const {id}=req.params
         await Book.destroy({
             where:{
-                id:null
+                id:id
             }
         })
         res.json({msg:"deleted successfully"})

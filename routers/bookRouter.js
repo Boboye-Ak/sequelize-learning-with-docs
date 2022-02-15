@@ -7,6 +7,6 @@ router.get("/", getAllBooks)
 router.get("/allbooks", getAllBooks)
 router.post("/addbook", addBook)
 router.get("/findbook", findBook)
-router.post("/updatebook", updateBook)
-router.post("/deletebook", deleteBook)
+router.put("/updatebook/:id", updateBook)
+router.delete("/deletebook/:id", deleteBook)
 module.exports=router;
