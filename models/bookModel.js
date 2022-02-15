@@ -2,9 +2,9 @@ const db=require("../connectDB/db")
 const Sequelize=require("sequelize")
 
 const bookModel=db.define("book", {
-    title:{type:Sequelize.STRING},
-    year:{type:Sequelize.NUMBER},
-    description:{type:Sequelize.STRING}
+    title:{type:Sequelize.STRING, allowNull:false},
+    year:{type:Sequelize.NUMBER, defaultValue:0},
+    description:{type:Sequelize.STRING, defaultValue:"Undescribed"}
 })
 
 bookModel.sync().then(()=>{
