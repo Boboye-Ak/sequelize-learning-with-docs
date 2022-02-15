@@ -7,4 +7,10 @@ const bookModel=db.define("book", {
     description:{type:Sequelize.STRING}
 })
 
+bookModel.sync().then(()=>{
+    console.log("Book model synced successfullly")
+}).catch((err)=>{
+    console.log("Error syncing bookmodel")
+})
+
 module.exports=bookModel
